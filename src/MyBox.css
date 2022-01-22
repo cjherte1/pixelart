@@ -1,0 +1,7 @@
+.MyBox {
+  height: 2em;
+  width: 2em;
+  border: 0.1em solid black;
+  background-color: white;
+  cursor: pointer;
+}
