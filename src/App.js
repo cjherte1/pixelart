@@ -7,6 +7,8 @@ function App() {
   const [color, setColor] = useState("#aabbcc");
   const [isDown, setIsDown] = useState(false);
   const [hasBorder, setHasBorder] = useState(true);
+  const [isEyedropper, setIsEyedropper] = useState(false);
+
   var boxes = [];
   for (var i = 0; i < 1296; ++i) {
     boxes.push(
@@ -46,6 +48,8 @@ function App() {
     setIsDown(true);
   }
 
+  function eyedropHandler(e) {}
+
   return (
     <div className="App">
       <div className="Banner"> Pixel Art Maker </div>
@@ -54,6 +58,9 @@ function App() {
           Show/Hide Grid
         </button>
         <HexColorPicker color={color} onChange={setColor} />
+        <button className="eyedropButton" onClick={eyedropHandler}>
+          Eyedrop Tool
+        </button>
       </div>
       <div className="Canvas">{boxes}</div>
     </div>
