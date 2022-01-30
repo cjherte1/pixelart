@@ -1,8 +1,9 @@
 import "./MyBox.css";
 
-function MyBox({ color, onClick, onMouseEnter, onMouseLeave }) {
+function MyBox({ id, color, onClick, onMouseEnter, onMouseLeave }) {
   return (
     <button
+      id={id}
       className="MyBox"
       background-color={color}
       onClick={onClick}

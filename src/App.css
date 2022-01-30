@@ -16,6 +16,7 @@ body {
   font-family: "Press Start 2P", cursive;
   font-size: 50pt;
   color: #282c34;
+  min-width: max-content;
 }
 
 .PickerContainer {
@@ -25,14 +26,24 @@ body {
   z-index: 1;
   padding: 1cm;
   margin-top: 20vh;
+  background-color: #61dafb;
+  border-radius: 5px;
+  box-shadow: 8px 8px 15px black;
 }
 
 .Canvas {
   margin: auto;
-  padding: 0.25em;
-  background-color: black;
-  height: 60em;
-  width: 60em;
+  height: 52.5em;
+  width: 55.5em;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  line-height: 0;
+}
+
+.smallCanvas {
+  margin: auto;
+  height: 16.5em;
+  width: 16.5em;
   margin-top: 5em;
   margin-bottom: 5em;
   line-height: 0;
