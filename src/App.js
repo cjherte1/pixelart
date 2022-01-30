@@ -13,7 +13,7 @@ function App() {
   for (var i = 0; i < 1296; ++i) {
     boxes.push(
       <MyBox
-        onClick={handleClick}
+        onClick={isEyedropper ? getColor : handleClick}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       />
@@ -28,6 +28,11 @@ function App() {
     if (isDown === true) {
       e.target.style.backgroundColor = color;
     }
+  }
+
+  function getColor(e) {
+    setColor(e.target.style.backgroundColor);
+    setIsEyedropper(false);
   }
 
   function gridHandler(e) {
@@ -48,7 +53,9 @@ function App() {
     setIsDown(true);
   }
 
-  function eyedropHandler(e) {}
+  function eyedropHandler(e) {
+    setIsEyedropper(true);
+  }
 
   return (
     <div className="App">
