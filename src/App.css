@@ -33,11 +33,13 @@ body {
 
 .Canvas {
   margin: auto;
-  height: 52.5em;
-  width: 55.5em;
+  height: 54em;
+  width: 54em;
   margin-top: 5em;
   margin-bottom: 5em;
   line-height: 0;
+  padding: 5em;
+  background-color: #282c34;
 }
 
 .smallCanvas {

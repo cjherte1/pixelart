@@ -1,8 +1,10 @@
 import "./App.css";
 import MyBox from "./MyBox.js";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { HexColorPicker } from "react-colorful";
 import PreviewBox from "./PreviewBox.js";
+import { exportComponentAsPNG } from 'react-component-export-image';
+
 
 function App() {
   const [color, setColor] = useState("#aabbcc");
@@ -11,9 +13,9 @@ function App() {
   const [isEyedropper, setIsEyedropper] = useState(false);
 
   var boxes = [];
-  var previewboxes = [];
-  var colors = Array(1024).fill("blue");
-  for (let i = 0; i < 1023; ++i) {
+  const canvasRef = useRef();
+
+  for (let i = 0; i < 1024; ++i) {
     boxes.push(
       <MyBox
         id={i}
@@ -24,14 +26,11 @@ function App() {
     );
   }
 
-  for (let i = 0; i < 1023; ++i) {
-    previewboxes.push(<PreviewBox id={i + 2000} color={colors[i]} />);
-  }
+  
 
   function handleClick(e) {
     e.target.style.backgroundColor = color;
     var num = e.target.id;
-    colors[num] = color;
   }
 
   function handleHover(e) {
@@ -75,10 +74,8 @@ function App() {
     }
   }
 
-  function handlePreview(b) {
-    for (let a of document.getElementsByClassName("PreviewBox")) {
-      a.style.backgroundColor = "gray";
-    }
+  function handleExport(e) {
+    exportComponentAsPNG(canvasRef);
   }
 
   return (
@@ -88,6 +85,7 @@ function App() {
         <button className="resetButton" onClick={resetHandler}>
           Reset
         </button>
+        <div className="row"></div>
         <button className="gridButton" onClick={gridHandler}>
           Show/Hide Grid
         </button>
@@ -95,12 +93,10 @@ function App() {
         <button className="eyedropButton" onClick={eyedropHandler}>
           Eyedrop Tool
         </button>
-        <button className="previewButton" onClick={handlePreview}>
-          Preview
-        </button>
+        <div className="row"></div>
+        <button className="exportButton" onClick={handleExport}>Export as PNG</button>
       </div>
-      <div className="Canvas">{boxes}</div>
-      <div className="smallCanvas">{previewboxes}</div>
+      <div className="Canvas" ref={canvasRef}>{boxes}</div>
     </div>
   );
 }
